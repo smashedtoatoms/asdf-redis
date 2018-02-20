@@ -18,6 +18,18 @@ _This requires [brew](http://brew.sh) if you're on a mac, or a debian flavored l
 asdf plugin-add redis https://github.com/smashedtoatoms/asdf-redis.git
 ```
 
+## Try it out
+1. Open up a terminal and run `redis-server`.  This will get it running on the standard port (6379)
+1. Open another terminal and run `redis-cli`.   This will open the redis cli so you can manually set, get, and delete keys.  For example: 
+```sh
+~ % redis-cli
+127.0.0.1:6379> set someKey "boomdiggity"
+OK
+127.0.0.1:6379> get someKey
+"boomdiggity"
+```
+As long as that initial terminal session is running, you should be able to use it on port 6379 on localhost.  Have fun!
+
 ## Gotchas
 This is a bare bones install of redis.  It has no configuration setup, no restart setup, or anything else.  It's just the binaries.  Fortunately, the binaries are usually all you need for dev environments.
 
