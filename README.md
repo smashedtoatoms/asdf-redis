@@ -1,15 +1,15 @@
-# asdf-redis
+# asdf-redis ![Build](https://github.com/smashedtoatoms/asdf-redis/workflows/Build/badge.svg?branch=master)
 
 Redis plugin for [asdf](https://github.com/asdf-vm/asdf) version manager
 
 ## Dependencies
-_This requires [brew](http://brew.sh) if you're on a mac, or a debian flavored linux.  If you need it to work on something else, you'll likely need to modify the plugin._  
+_This requires [brew](http://brew.sh) if you're on a mac, or a debian flavored linux.  If you need it to work on something else, you'll likely need to modify the plugin._
 
 1. You will need a compiler.
   * Mac
     1. ```gcc```
     1. Hit the ok button and it will install.  If it already has it, then you are good.
-  * Ubuntu  
+  * Ubuntu
     1. ```sudo apt-get install linux-headers-$(uname -r) build-essential```
 
 ## Install
@@ -20,7 +20,7 @@ asdf plugin-add redis https://github.com/smashedtoatoms/asdf-redis.git
 
 ## Try it out
 1. Open up a terminal and run `redis-server`.  This will get it running on the standard port (6379)
-1. Open another terminal and run `redis-cli`.   This will open the redis cli so you can manually set, get, and delete keys.  For example: 
+1. Open another terminal and run `redis-cli`.   This will open the redis cli so you can manually set, get, and delete keys.  For example:
 ```sh
 ~ % redis-cli
 127.0.0.1:6379> set someKey "boomdiggity"
