@@ -1,3 +1,5 @@
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/smashedtoatoms/asdf-redis)
+
 # asdf-redis ![Build](https://github.com/smashedtoatoms/asdf-redis/workflows/Build/badge.svg?branch=master)
 
 Redis plugin for [asdf](https://github.com/asdf-vm/asdf) version manager
