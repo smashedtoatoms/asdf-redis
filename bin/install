@@ -67,7 +67,7 @@ get_download_file_path() {
 get_download_url() {
   local install_type=$1
   local version=$2
-  echo "http://download.redis.io/releases/redis-${version}.tar.gz"
+  echo "https://download.redis.io/releases/redis-${version}.tar.gz"
 }
 
 
