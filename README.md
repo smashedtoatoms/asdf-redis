@@ -41,3 +41,11 @@ When installing Redis using `asdf install`, you can pass custom configure option
 
 * `REDIS_CONFIGURE_OPTIONS` - use only your configure options
 * `REDIS_EXTRA_CONFIGURE_OPTIONS` - append these configure options along with ones that this plugin already uses
+* `REDIS_APPLY_PATCHES` - a list of files or URLs to apply patches to Redis
+
+You may also apply custom patches before building with `REDIS_APPLY_PATCHES`. For example:
+
+```shell
+REDIS_APPLY_PATCHES=$'dir/1.patch\n2.patch\nhttp://example.com/3.patch' asdf install redis 7.0.12
+REDIS_APPLY_PATCHES="https://patch-diff.githubusercontent.com/raw/redis/redis/pull/12601.diff" asdf install redis 7.0.12
+```
