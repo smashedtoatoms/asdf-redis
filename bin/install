@@ -153,7 +153,10 @@ get_openssl_prefix() {
     fi
 
     if [[ -z $openssl_prefix && -d "$HOMEBREW_PREFIX/opt" ]]; then
-      if stat -v "$HOMEBREW_PREFIX/opt/openssl" >/dev/null 2>&1; then
+      if [[ -d "$HOMEBREW_PREFIX/opt/openssl@3" ]]; then
+        export HOMEBREW_PREFIX
+        openssl_prefix="$HOMEBREW_PREFIX/opt/openssl@3"
+      elif [[ -d "$HOMEBREW_PREFIX/opt/openssl" ]]; then
         export HOMEBREW_PREFIX
         openssl_prefix="$HOMEBREW_PREFIX/opt/openssl"
       fi
