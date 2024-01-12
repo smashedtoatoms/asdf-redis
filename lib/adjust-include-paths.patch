@@ -1,0 +1,37 @@
+diff --git a/src/Makefile b/src/Makefile
+index 75d18f5e6..0407fdc98 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -116,8 +116,8 @@ endif
+ # Override default settings if possible
+ -include .make-settings
+ 
+-FINAL_CFLAGS=$(STD) $(WARN) $(OPT) $(DEBUG) $(CFLAGS) $(REDIS_CFLAGS)
+-FINAL_LDFLAGS=$(LDFLAGS) $(REDIS_LDFLAGS) $(DEBUG)
++FINAL_CFLAGS=$(STD) $(WARN) $(OPT) $(DEBUG)
++FINAL_LDFLAGS=$(DEBUG)
+ FINAL_LIBS=-lm
+ DEBUG=-g -ggdb
+ 
+@@ -150,7 +150,10 @@ ifeq ($(uname_S),Darwin)
+ 	# Homebrew's OpenSSL is not linked to /usr/local to avoid
+ 	# conflicts with the system's LibreSSL installation so it
+ 	# must be referenced explicitly during build.
+-ifeq ($(uname_M),arm64)
++	HOMEBREW_PREFIX?=$(shell brew --prefix 2>/dev/null)
++ifdef HOMEBREW_PREFIX
++	OPENSSL_PREFIX?=$(HOMEBREW_PREFIX)/opt/openssl
++else ifeq ($(uname_M),arm64)
+ 	# Homebrew arm64 uses /opt/homebrew as HOMEBREW_PREFIX
+ 	OPENSSL_PREFIX?=/opt/homebrew/opt/openssl
+ else
+@@ -317,6 +320,9 @@ else
+     endef
+ endif
+ 
++FINAL_CFLAGS+=$(CFLAGS) $(REDIS_CFLAGS)
++FINAL_LDFLAGS+=$(LDFLAGS) $(REDIS_LDFLAGS)
++
+ REDIS_CC=$(QUIET_CC)$(CC) $(FINAL_CFLAGS)
+ REDIS_LD=$(QUIET_LINK)$(CC) $(FINAL_LDFLAGS)
+ REDIS_INSTALL=$(QUIET_INSTALL)$(INSTALL)
