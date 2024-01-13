@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+: ${ASDF_DATA_DIR:=${HOME}/.asdf}
+: ${ASDF_PLUGIN_PATH:=${ASDF_DATA_DIR}/plugins/redis}
+
 install_redis() {
   local install_type=$1
   local version=$2
@@ -25,7 +28,7 @@ install_redis() {
 
     # Make a minor fix that solves problems when newer versions of Lua are
     # installed on the system
-    patch -Np1 -i "${ASDF_PLUGIN_PATH:-$HOME/.asdf/plugins/redis}/lib/adjust-include-paths.patch" || exit 1
+    patch -Np1 -i "${ASDF_PLUGIN_PATH}/lib/adjust-include-paths.patch" || exit 1
 
     if [[ -n "${REDIS_APPLY_PATCHES:-}" ]]; then
       apply_patches "$(fetch_patches "$REDIS_APPLY_PATCHES")"
